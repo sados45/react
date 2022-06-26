@@ -15,3 +15,95 @@
   //componentleri App.js icerisinde cagiriyoruz. example 1, 2, 3 örneklerinde oldugu gibi. mesela example lerin siralamasi farkli yazilirsa ekrana ona gore degismis hali yansir. example3 icerisine example4 componenetini altina actik. 
 
   //example4 e bir button ekledik. ama bu butonu digerlerine de eklemek istiyoruz. bunun icin example1,2,3 icerisine <example/> cagiriyoruz bu sekilde. bu özellik sayesinde büyük bir kolaylik elde ettik. 
+
+  //constructor ______
+
+  bunu yazdigimiz yerde, class a ait olan özellikleri anlayip onun sahip oldugu özellikleri ona yüklüyor. App.js icerisine yazdik burada.eger daha üst bir class dan birsey alacaksam ;
+  Expert default class App extends Component{
+  constructor(props){
+    super(props)
+    this.state ={ 
+      counter= 0
+    } objeyi bu sekilde acariz. 
+  }
+  render(){
+
+  }
+}
+  bir class yapisinin icinde normalde bir constructor yapisi olmali. ve bu yapinin icinde this.state olarak tanimlanir. 
+
+  ancak biz constructor functionunu cagirmadan da biz classimizi calistirabiliriz. ama normal sartlarda javascriptte consrturctor functionu olmadan bir class calismaz. ama reactte construction functionu olmadan da biz calisabiliyoruz. biz classa ait consturtoru tamamen kaldirirsak dahi kendisi calismaya devam eder düzen bozulmaz. peki biz consructor olmadan nasil state i kullanacagiz. 
+
+  Expert default class App extends Component{
+    
+      this.state ={ 
+        state= {
+          count:0
+        }
+
+    }
+    render(){
+
+      return{
+
+      }
+  
+    }
+  } yani biz consturtor yazmiyoruz. ama state yazip tanimimizi yapabiliyoruz. 
+
+  //biz js  teki gibi object icinde tanimlama ve ekleme hadiselerini state ile istedigimiz kadar doldurabiliyoruz. name: Sedat; occupation:developer; gibi.
+
+  //eger yazdiklarimizi görmek istersek console ile yapacagiz render in altina retunün üsütne yani ikisinin arasina console.log yazabilriz. biz bunlarin tamaminin App.js icinde yapiyoruz. 
+
+  Expert default class App extends Component{
+    
+  
+      state= {
+        count:0,
+        name:'Sedat',
+        occupation:'developer'
+      }
+  }
+  <!-- render(){
+
+    return(
+<div>
+
+  <p>{this.state.name}</p> //burada köseli parantez icine yazmak ve this kullanmak zorundayiz. 
+  <p>{this.state.occupation}</p> //burada köseli parantez icine yazmak ve this kullanmak zorundayiz. 
+  <p>{this.state.count</p> 
+</div>
+)
+  }
+} --> 
+//eger const x: 0; gibi degisken atamasi yapacaksak render ile return arasina yaziyoruz.
+
+// bir örnek:
+
+// Expert default class App extends Component{
+    
+  
+  state= {
+    count:0,
+    name:'Sedat',
+    occupation:'developer'
+  }
+
+  handleClick=() =>{
+    this.setState({count:this.State.count +1})
+  }
+
+<!-- render(){
+
+    console.log('component render edildi.')
+  return(
+<div>
+
+<p>{this.state.name}</p> //burada köseli parantez icine yazmak ve this kullanmak zorundayiz. 
+<p>{this.state.occupation}</p> //burada köseli parantez icine yazmak ve this kullanmak zorundayiz. 
+<p>{this.state.count</p> 
+  <button onClick={this.handleClick}>state degistir</button>
+</div>
+)
+}
+} --> //burada state degistir tusuna bastikca count sayisi artiyor. sifirdi. yukarida count yerine setState icersinde name:Ihsan yazdik bunu hemen degistirdi. ama sayfayi yenile dersek yine hasan oldu. react anlik degisiklikleri yapar. agirlik yerine cok hizli tepki verilmesinde etkilidir. 
